@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <!-- JQuery -->
+    <script type=“text/javascript” src=“https://code.jquery.com/jquery-2.1.1.min.js“></script>
 </head>
 <body>
     <div class="jumbotron">
@@ -15,8 +17,8 @@
         <p class="lead text-center">Current Reservations & Wait List</p>
         <hr class="my-4">
         <div class="text-center">
-            <a id="home-btn" class="btn btn-danger btn-lg" href="index.html" role="button"><i class="fas fa-home"></i> Home</a>
-            <a id="view-btn" class="btn btn-primary btn-lg" href="view-tables.html" role="button"><i class="fas fa-list-ul"></i> View Tables</a>
+            <a id="home-btn" class="btn btn-danger btn-lg" href="/" role="button"><i class="fas fa-home"></i> Home</a>
+            <a id="view-btn" class="btn btn-primary btn-lg" href="view-tables" role="button"><i class="fas fa-list-ul"></i> View Tables</a>
         </div>
     </div>
 
@@ -49,8 +51,29 @@
         </div>
         
         <p class="text-center">
-            <a href="#">API Table List</a> | <a href="#">API Wait List</a>
+            <a href="api/tables">API Table List</a> | <a href="api/waitList">API Wait List</a>
         </p>
+
+        <!-- Javascript -->
+        <script type="text/javascript">
+            $("#submit-btn").on("click", function(event) {
+              event.preventDefault();
+        
+              var newRes = {
+                name: $("#name-input").val().trim(),
+                phone: $("#phone-input").val().trim(),
+                email: $("#email-input").val().trim(),
+                id: $("#id-input").val().trim()
+              };
+        
+              $.post("/api/tables", newRes)
+                .then(function(data) {
+                  console.log(data);
+                  alert("Adding reservation...");
+                });
+        
+            });
+          </script>
     </div>
 </body>
 </html>

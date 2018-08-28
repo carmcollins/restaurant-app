@@ -15,13 +15,13 @@ app.use(bodyParser.json());
 
 // Set up (DATA)
 // ==========================================================
-var tables = {
+var tables = [{
     routeName: "guestone",
     name: "Guest One",
     phoneNumber: 555 - 555 - 5555,
     email: "guestone@example.com",
     uniqueId: 1350
-};
+}];
 
 var waitList = {};
 
@@ -54,19 +54,19 @@ app.get("/api/waitList", function (req, res) {
 
 app.post("/api/tables", function (req, res) {
 
-    var newres = req.body;
+    var newRes = req.body;
 
-    newres.routeName = newres.name.replace(/\s+/g, "").toLowerCase();
+    newRes.routeName = newRes.name.replace(/\s+/g, "").toLowerCase();
 
-    console.log(newres);
+    console.log(newRes);
 
     if (tables.length > 5) {
-        waitList.push(newres);
+        waitList.push(newRes);
     } else {
-        tables.push(newres);
+        tables.push(newRes);
     }
 
-    res.json(newres);
+    res.json(newRes);
 });
 
 // Starts the server to begin listening
