@@ -1,30 +1,21 @@
 // Dependencies
-// ============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 
-// Sets up the Express App
-// ============================================================
+// Sets up (EXPRESS)
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-/// Sets up the Express app to handle data parsing
+// Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Set up (DATA)
-// ==========================================================
 var tables = [];
-
-
-
 var waitList = [];
 
-
-
 // Set up (ROUTES)
-// ==========================================================
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
 });
@@ -37,7 +28,7 @@ app.get("/make-res", function (req, res) {
     res.sendFile(path.join(__dirname, "make-res.html"));
 });
 
-//displays tables and waiting list
+// Display tables and wait list
 app.get("/api/tables", function (req, res) {
     return res.json(tables);
 });
@@ -46,7 +37,7 @@ app.get("/api/waitList", function (req, res) {
     return res.json(waitList);
 });
 
-//Create New Reservation
+// Creating new reservations
 app.post("/api/tables", function (req, res) {
     console.log("message received");
 
@@ -64,8 +55,6 @@ app.post("/api/tables", function (req, res) {
 });
 
 // Starts the server to begin listening
-//==========================================================
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
-  });
-  
+});

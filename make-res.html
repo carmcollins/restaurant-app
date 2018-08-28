@@ -9,10 +9,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <!-- JQuery -->
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="jumbotron">
@@ -24,7 +21,6 @@
             <a id="view-btn" class="btn btn-primary btn-lg" href="view-tables" role="button"><i class="fas fa-list-ul"></i> View Tables</a>
         </div>
     </div>
-
     <div class="container">
         <div class="card mb-4">
             <div class="card-header font-weight-bold">
@@ -52,40 +48,38 @@
                 </form>
             </div>
         </div>
-        
         <p class="text-center">
-            <a href="api/tables">API Table List</a> | <a href="api/waitList">API Wait List</a>
+            <a href="api/tables" target="blank">API Table List</a> | <a href="api/waitList" target="blank">API Wait List</a>
         </p>
+    </div>
 
-        <!-- Javascript -->
-        <script type="text/javascript">
-            $("#submit-btn").on("click", function(event) {
-              event.preventDefault();
-                
-              var newRes = {
+    <!-- Javascript -->
+    <script type="text/javascript">
+        $("#submit-btn").on("click", function(event) {
+            event.preventDefault();
+            
+            var newRes = {
                 name: $("#name-input").val().trim(),
                 phone: $("#phone-input").val().trim(),
                 email: $("#email-input").val().trim(),
                 id: $("#id-input").val().trim()
-              };
+            };
 
-              $("#name-input").val(""); 
-              $("#phone-input").val("");
-              $("#email-input").val("");
-              $("#id-input").val("");
+            $("#name-input").val(""); 
+            $("#phone-input").val("");
+            $("#email-input").val("");
+            $("#id-input").val("");
 
-              $.post("/api/tables", newRes)
-                .then(function(data) {
-                  if(data === true){
-                      alert("Adding reservation....")
-                  }
-                  else {
-                      alert("You've been added to the waitlist....")
-                  }
-                });
-        
+            $.post("/api/tables", newRes)
+            .then(function(data) {
+                if(data === true){
+                    alert("Adding reservation....");
+                }
+                else {
+                    alert("You've been added to the waitlist....");
+                }
             });
-          </script>
-    </div>
+        });
+    </script>
 </body>
 </html>
