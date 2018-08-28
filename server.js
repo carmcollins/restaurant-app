@@ -15,15 +15,11 @@ app.use(bodyParser.json());
 
 // Set up (DATA)
 // ==========================================================
-var tables = [{
-    routeName: "guestone",
-    name: "Guest One",
-    phoneNumber: 555 - 555 - 5555,
-    email: "guestone@example.com",
-    uniqueId: 1350
-}];
+var tables = [];
 
-var waitList = {};
+
+
+var waitList = [];
 
 
 
@@ -53,10 +49,9 @@ app.get("/api/waitList", function (req, res) {
 //Create New Reservation
 
 app.post("/api/tables", function (req, res) {
+    console.log("message received");
 
     var newRes = req.body;
-
-    newRes.routeName = newRes.name.replace(/\s+/g, "").toLowerCase();
 
     console.log(newRes);
 
