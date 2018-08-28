@@ -47,7 +47,6 @@ app.get("/api/waitList", function (req, res) {
 });
 
 //Create New Reservation
-
 app.post("/api/tables", function (req, res) {
     console.log("message received");
 
@@ -55,13 +54,13 @@ app.post("/api/tables", function (req, res) {
 
     console.log(newRes);
 
-    if (tables.length > 5) {
+    if (tables.length >= 5) {
         waitList.push(newRes);
+        res.send(false);
     } else {
         tables.push(newRes);
+        res.send(true);
     }
-
-    res.json(newRes);
 });
 
 // Starts the server to begin listening

@@ -61,18 +61,27 @@
         <script type="text/javascript">
             $("#submit-btn").on("click", function(event) {
               event.preventDefault();
-        
+                
               var newRes = {
                 name: $("#name-input").val().trim(),
                 phone: $("#phone-input").val().trim(),
                 email: $("#email-input").val().trim(),
                 id: $("#id-input").val().trim()
               };
-        
+
+              $("#name-input").val(""); 
+              $("#phone-input").val("");
+              $("#email-input").val("");
+              $("#id-input").val("");
+
               $.post("/api/tables", newRes)
                 .then(function(data) {
-                  console.log(data);
-                  alert("Adding reservation...");
+                  if(data === true){
+                      alert("Adding reservation....")
+                  }
+                  else {
+                      alert("You've been added to the waitlist....")
+                  }
                 });
         
             });
