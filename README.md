@@ -16,4 +16,7 @@ Then type the following in your browser:
 ```
 localhost:3000
 ```
-Enjoy!
+
+<img src="images/app1.png">
+<img src="images/app2.png">
+<img src="images/app3.png">
